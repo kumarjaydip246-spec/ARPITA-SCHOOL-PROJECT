@@ -1,0 +1,253 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: white;
+    min-height: 100vh;
+    background: #06152f;
+    overflow-x: hidden;
+}
+
+/* SIX FULL SCREEN BACKGROUNDS */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.background.active {
+    opacity: 1;
+}
+
+.background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 12, 35, 0.55);
+}
+
+/* NAVIGATION */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 18px 5%;
+    background: rgba(3, 15, 38, 0.93);
+    backdrop-filter: blur(15px);
+}
+
+.logo {
+    color: #ffd700;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+nav a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    margin: 7px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+nav a:hover,
+nav a.current {
+    color: #ffd700;
+}
+
+/* COMMON CONTENT */
+
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+.page {
+    min-height: 85vh;
+    padding: 75px 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+    color: #ffd700;
+}
+
+h2 {
+    color: #ffd700;
+    font-size: 34px;
+    margin-bottom: 25px;
+}
+
+h3 {
+    margin-bottom: 12px;
+}
+
+p {
+    line-height: 1.7;
+}
+
+.hero {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero p {
+    font-size: 19px;
+    margin: 20px 0;
+}
+
+/* BUTTONS */
+
+.btn {
+    display: inline-block;
+    background: #ffd700;
+    color: #07172f;
+    border: none;
+    padding: 14px 25px;
+    margin: 10px 5px;
+    border-radius: 9px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+/* CARDS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.3);
+    backdrop-filter: blur(12px);
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 0 20px rgba(0,220,255,.5);
+}
+
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    margin: 12px 0;
+}
+/* GLASS BOX */
+
+.glass {
+    max-width: 750px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.3);
+    backdrop-filter: blur(15px);
+}
+
+/* CONTACT AND LOGIN INPUTS */
+
+input, textarea {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-size: 15px;
+    outline: none;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+form {
+    max-width: 550px;
+    margin: auto;
+}
+
+/* FOOTER */
+
+footer {
+    background: rgba(0,0,0,.8);
+    text-align: center;
+    padding: 30px 15px;
+    line-height: 2;
+}
+
+footer a {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+@media(max-width: 700px) {
+    nav {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav div:last-child {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        margin: 5px;
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    h2 {
+        font-size: 27px;
+    }
+
+    .page {
+        padding: 50px 0;
+    }
+}

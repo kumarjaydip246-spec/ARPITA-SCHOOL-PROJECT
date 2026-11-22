@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>79 Teachers | Divine Happy School</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #07152e;
+    color: white;
+}
+
+.teachers-container {
+    width: 94%;
+    max-width: 1250px;
+    margin: 35px auto;
+}
+
+.teacher-heading {
+    text-align: center;
+    padding: 35px 15px;
+}
+
+.teacher-heading h1 {
+    color: #ffd700;
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px #00cfff;
+}
+
+.teacher-heading p {
+    color: #d8e8ff;
+    font-size: 16px;
+}
+
+.teacher-stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.09);
+    border: 1px solid rgba(0,217,255,0.5);
+    border-radius: 15px;
+    padding: 18px 25px;
+    min-width: 145px;
+    text-align: center;
+    box-shadow: 0 0 12px rgba(0,217,255,0.15);
+}
+
+.stat-card h2 {
+    color: #ffd700;
+    margin: 0 0 7px;
+    font-size: 28px;
+}
+
+.stat-card p {
+    margin: 0;
+    color: #dceaff;
+    font-size: 14px;
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.controls input,
+.controls select {
+    padding: 13px 16px;
+    border-radius: 9px;
+    border: 1px solid #00cfff;
+    background: #10264a;
+    color: white;
+    font-size: 15px;
+    outline: none;
+}
+
+.controls input {
+    width: 320px;
+    max-width: 100%;
+}
+
+.controls select {
+    min-width: 190px;
+}
+
+.controls input::placeholder {
+    color: #b9c9df;
+}
+
+.category-section {
+    margin: 35px 0;
+}
+
+.category-title {
+    color: #ffd700;
+    font-size: 25px;
+    border-left: 5px solid #00d9ff;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background: rgba(0,217,255,0.08);
+    border-radius: 5px;
+}
+
+.category-description {
+    color: #c9d9ed;
+    margin: 0 0 15px 15px;
+    font-size: 14px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(0,217,255,0.35);
+    background: rgba(255,255,255,0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+thead {
+    background: linear-gradient(90deg, #102e63, #087eaa);
+}
+
+th {
+    color: #ffd700;
+    padding: 15px 12px;
+    text-align: left;
+    font-size: 14px;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: #eaf2ff;
+    font-size: 14px;
+}
+
+tbody tr:hover {
+    background: rgba(0,217,255,0.10);
+}
+
+.teacher-initials {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #102e63, #087eaa);
+    color: #ffd700;
+    border: 2px solid #ffd700;
+    box-shadow: 0 0 10px rgba(0,217,255,0.5);
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.teacher-name {
+    font-weight: bold;
+    color: white;
+}
+
+.no-results {
+    text-align: center;
+    padding: 25px;
+    color: #ffd700;
+    display: none;
+}
+
+.back-home {
+    display: block;
+    width: fit-content;
+    margin: 35px auto;
+    padding: 13px 25px;
+    background: linear-gradient(90deg, #087eaa, #102e63);
+    color: white;
+    text-decoration: none;
+    border: 1px solid #00d9ff;
+    border-radius: 9px;
+    font-weight: bold;
+}
+
+.back-home:hover {
+    background: #087eaa;
+    box-shadow: 0 0 15px #00d9ff;
+}
+
+footer {
+    text-align: center;
+    padding: 22px;
+    color: #b9c9df;
+    background: rgba(0,0,0,0.25);
+    margin-top: 40px;
+}
+
+@media(max-width:600px) {
+    .teacher-heading h1 {
+        font-size: 27px;
+    }
+
+    .stat-card {
+        min-width: 125px;
+        padding: 14px;
+    }
+
+    .category-title {
+        font-size: 20px;
+    }
+
+    .controls input,
+    .controls select {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <div class="logo">
+        <img src="aayush.png" alt="School Logo" width="65">
+        <span>DIVINE HAPPY SCHOOL</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+        <a href="teachers.html">Teachers</a>
+        <a href="login.html">School Login</a>
+    </div>
+</nav>
+
+<main class="teachers-container">
+
+    <header class="teacher-heading">
+        <h1>Our Teachers & Staff</h1>
+        <p>Meet the dedicated team of Divine Happy School</p>
+    </header>
+
+    <!-- STATISTICS -->
+    <section class="teacher-stats">
+        <div class="stat-card">
+            <h2 id="totalCount">79</h2>
+            <p>Total Staff</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>5</h2>
+            <p>Departments</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>28+</h2>
+            <p>Classes & Levels</p>
+        </div>
+    </section>
+
+    <!-- SEARCH AND FILTER -->
+    <section class="controls">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search teacher by name or degree..."
+            oninput="renderTeachers()"
+        >
+
+        <select id="categoryFilter" onchange="renderTeachers()">
+            <option value="All">All Departments</option>
+            <option value="Management">School Management</option>
+            <option value="PGT">PGT</option>
+            <option value="TGT">TGT</option>
+            <option value="PRT">PRT</option>
+            <option value="NTT">NTT</option>
+        </select>
+    </section>
+
+    <!-- TEACHERS WILL APPEAR HERE -->
+    <div id="teacherSections"></div>
+
+    <div class="no-results" id="noResults">
+        No matching teachers found.
+    </div>
+
+    <a href="index.html" class="back-home">← Back to Home</a>
+
+</main>
+
+<footer>
+    © 2026 Divine Happy School. All Rights Reserved.
+</footer>
+
+<script>
+
+// ========================================
+// TEACHER AND STAFF DATABASE
+// ========================================
+
+const teachers = [
+
+    // SCHOOL MANAGEMENT & LEADERSHIP
+    {
+        name: "Dr. Anita Kunwar",
+        degree: "M.Sc., B.Ed., Ph.Ed.",
+        category: "Management",
+        role: "Managing Trustee"
+    },
+    {
+        name: "Ms. Manisha Madhushree",
+        degree: "M.Sc., B.Ed.",
+        category: "Management",
+        role: "Principal"
+    },
+    {
+        name: "Ms. Sujata Sarkar",
+        degree: "M.Sc., B.Ed.",
+        category: "Management",
+        role: "Vice Principal"
+    },
+    {
+        name: "Anshuman",
+        degree: "MCA",
+        category: "Management",
+        role: "Office Administration"
+    },
+
+    // POST GRADUATE TEACHERS (PGT)
+    {
+        name: "Abinash Kumar",
+        degree: "M. P. Ed.",
+        category: "PGT"
+    },
+    {
+        name: "Amrita Bhattacharya",
+        degree: "M.A.; B.Ed.",
+        category: "PGT"
+    },
+    {
+        name: "Anshuman",
+        degree: "MCA",
+        category: "PGT"
+    },
+    {
+        name: "Darakshan Rahman",
+        degree: "M.Sc.; B.Ed.",
+        category: "PGT"
+    },
+    {
+        name: "Devesh Chandra Jha",
+        degree: "M.Sc.; B.Ed.",
+        category: "PGT"
+    },
+    {
+        name: "Dilip Kumar Singh",
+        degree: "M.A.; B.Ed.",
+        category: "PGT"
+    },
+    {
+        name: "Kastury Acharjee",
+        degree: "M.Com; B.Ed",
+        category: "PGT"
+    },
+    {
+        name: "Niranjan Kumar",
+        degree: "M.Com; B.Ed",
+        category: "PGT"
+    },
+    {
+        name: "Pankaj Kumar",
+        degree: "M.Sc; D.El.Ed",
+        category: "PGT"
+    },
+
+    // TRAINED GRADUATE TEACHERS (TGT)
+    {
+        name: "Anil Kumar Singh",
+        degree: "M.A.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Bikas Kumar",
+        degree: "M.Sc.",
+        category: "TGT"
+    },
+    {
+        name: "Chandan Kumar Mishra",
+        degree: "M.Sc.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Deepak Kumar",
+        degree: "B.A.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Dinbandhu Singh",
+        degree: "B.A.",
+        category: "TGT"
+    },
+    {
+        name: "Jitendra Kumar Das",
+        degree: "B.A.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Kumar Gourav",
+        degree: "B.Tech.",
+        category: "TGT"
+    },
+    {
+        name: "Kumar Piyush",
+        degree: "B.Com; DCA",
+        category: "TGT"
+    },
+    {
+        name: "Kumari Rani",
+        degree: "B.A.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Kumkum Kumari",
+        degree: "M.A.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Lipi",
+        degree: "M.A.",
+        category: "TGT"
+    },
+    {
+        name: "Manoj Kumar Shah",
+        degree: "B.A.",
+        category: "TGT"
+    },
+    {
+        name: "Mayank Anand",
+        degree: "B.Sc.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Md Aadil Khan",
+        degree: "M.Sc.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Monika",
+        degree: "B.A.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Nita Singh",
+        degree: "M.Com; B.Ed",
+        category: "TGT"
+    },
+    {
+        name: "Priyanka Kumari",
+        degree: "MCA",
+        category: "TGT"
+    },
+    {
+        name: "Rajesh Kumar Sah",
+        degree: "B.A.",
+        category: "TGT"
+    },
+    {
+        name: "Rajiv Prasad Singh",
+        degree: "B.P.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Ranjita Mishra",
+        degree: "B.Sc.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Rashmi Kumari",
+        degree: "B.A.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Rashmi Lata Bharati",
+        degree: "M.A.",
+        category: "TGT"
+    },
+    {
+        name: "Ruby Mishra",
+        degree: "B.Sc.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Sakshi Srivastava",
+        degree: "B.A.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Sapna Sinha",
+        degree: "M.A.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Satya Thakur",
+        degree: "B.Sc.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Shravan Kumar Paswan",
+        degree: "M.A.",
+        category: "TGT"
+    },
+    {
+        name: "Sopan Sinha",
+        degree: "B.Sc.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Subodh Kumar Pankaj",
+        degree: "M.A.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Sudhanshu Kumar Lal",
+        degree: "B.A.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Sudhir Prasad Singh",
+        degree: "B.Sc.; D.El.Ed",
+        category: "TGT"
+    },
+    {
+        name: "Vidya Pathak",
+        degree: "M.Sc.; B.Ed.",
+        category: "TGT"
+    },
+    {
+        name: "Vikram Kumar",
+        degree: "BIT, B.Ed.",
+        category: "TGT"
+    },
+
+    // PRIMARY TEACHERS (PRT)
+    {
+        name: "Abha Kumari",
+        degree: "B.A.",
+        category: "PRT"
+    },
+    {
+        name: "Abhinav Kumar",
+        degree: "B.A.",
+        category: "PRT"
+    },
+    {
+        name: "Aditi Shukla",
+        degree: "B.Com., B.Ed.",
+        category: "PRT"
+    },
+    {
+        name: "Anamika",
+        degree: "M.A., BLIS",
+        category: "PRT"
+    },
+    {
+        name: "Dhatri Kumari",
+        degree: "B.A., B.Ed.",
+        category: "PRT"
+    },
+    {
+        name: "Juuhie Jaiin",
+        degree: "M.A.",
+        category: "PRT"
+    },
+    {
+        name: "Mansi Raj",
+        degree: "B.A.",
+        category: "PRT"
+    },
+    {
+        name: "Md Zeeshan Ansari",
+        degree: "B.A., D.El.Ed.",
+        category: "PRT"
+    },
+    {
+        name: "Monika Kumari",
+        degree: "B.A., D.El.Ed.",
+        category: "PRT"
+    },
+    {
+        name: "Monika Kumari Sinha",
+        degree: "M.A., D.El.Ed.",
+        category: "PRT"
+    },
+    {
+        name: "Nitu Kumari",
+        degree: "B.Sc.; D.El.Ed",
+        category: "PRT"
+    },
+    {
+        name: "Parth Sarathi",
+        degree: "B.A.",
+        category: "PRT"
+    },
+    {
+        name: "Priyanka Kumari",
+        degree: "M.A., B.Ed.",
+        category: "PRT"
+    },
+    {
+        name: "Raghav Roshan",
+        degree: "MCA",
+        category: "PRT"
+    },
+    {
+        name: "Rajesh Kumar",
+        degree: "B.Sc.; D.El.Ed",
+        category: "PRT"
+    },
+    {
+        name: "Rashmi Singh",
+        degree: "M.A.; D.El.Ed",
+        category: "PRT"
+    },
+    {
+        name: "Reena Priyadarshni",
+        degree: "M.A.; D.El.Ed",
+        category: "PRT"
+    },
+    {
+        name: "Rumi Sinha",
+        degree: "B.A.",
+        category: "PRT"
+    },
+    {
+        name: "Sazia Iftekhar",
+        degree: "B.A.",
+        category: "PRT"
+    },
+    {
+        name: "Shikha Saurav",
+        degree: "B.Sc.; B.Ed.",
+        category: "PRT"
+    },
+    {
+        name: "Shital Kashyap",
+        degree: "B.A.; B.Ed.",
+        category: "PRT"
+    },
+    {
+        name: "Sneha Kumari",
+        degree: "B.A.",
+        category: "PRT"
+    },
+    {
+        name: "Sunny",
+        degree: "B.A.",
+        category: "PRT"
+    },
+    {
+        name: "Surbhi Sarin",
+        degree: "M.Com.",
+        category: "PRT"
+    },
+    {
+        name: "Swati Singh",
+        degree: "M.Com., B.Ed.",
+        category: "PRT"
+    },
+    {
+        name: "Sweta Khetan",
+        degree: "BCA",
+        category: "PRT"
+    },
+    {
+        name: "Tapas Kumar Sharma",
+        degree: "B.A.",
+        category: "PRT"
+    },
+    {
+        name: "Umra Zaman",
+        degree: "M.A.",
+        category: "PRT"
+    },
+    {
+        name: "Varnika Agarwal",
+        degree: "B.Com.",
+        category: "PRT"
+    },
+
+    // NURSERY TEACHER TRAINING (NTT)
+    {
+        name: "Kumari Aditi",
+        degree: "B.A.",
+        category: "NTT"
+    },
+    {
+        name: "Mona Sagar",
+        degree: "B.A.",
+        category: "NTT"
+    },
+    {
+        name: "Nishi Choudhary",
+        degree: "B.Com.",
+        category: "NTT"
+    },
+    {
+        name: "Pallavi Raj",
+        degree: "M.A.; B.Ed.",
+        category: "NTT"
+    }
+];
+
+
+// ========================================
+// CATEGORY INFORMATION
+// ========================================
+
+const categories = [
+    {
+        id: "Management",
+        title: "School Management & Leadership",
+        description: "School leadership, administration and management team."
+    },
+    {
+        id: "PGT",
+        title: "Post Graduate Teachers (PGT)",
+        description: "Senior secondary subject specialists."
+    },
+    {
+        id: "TGT",
+        title: "Trained Graduate Teachers (TGT)",
+        description: "Middle and secondary school educators."
+    },
+    {
+        id: "PRT",
+        title: "Primary Teachers (PRT)",
+        description: "Class I to V educators."
+    },
+    {
+        id: "NTT",
+        title: "Nursery Teacher Training (NTT)",
+        description: "Nursery to UKG educators."
+    }
+];
+
+
+// ========================================
+// CREATE SHORT INITIALS
+// Example: Aayush Raj = AR
+// ========================================
+
+function getInitials(name) {
+
+    const cleanName = name
+        .replace(/^(Dr\.|Ms\.|Mr\.|Mrs\.|Miss)\s*/i, "")
+        .trim();
+
+    const parts = cleanName.split(/\s+/);
+
+    if (parts.length === 1) {
+        return parts[0].slice(0, 2).toUpperCase();
+    }
+
+    return (
+        parts[0][0] +
+        parts[parts.length - 1][0]
+    ).toUpperCase();
+}
+
+
+// ========================================
+// CREATE TEACHER TABLE ROW
+// ========================================
+
+function createTeacherRow(teacher, index) {
+
+    const row = document.createElement("tr");
+
+    const number = document.createElement("td");
+    number.textContent = index + 1;
+
+    const initialsCell = document.createElement("td");
+
+    const initials = document.createElement("div");
+    initials.className = "teacher-initials";
+    initials.textContent = getInitials(teacher.name);
+
+    initialsCell.appendChild(initials);
+
+    const name = document.createElement("td");
+    name.className = "teacher-name";
+    name.textContent = teacher.name;
+
+    const role = document.createElement("td");
+    role.textContent = teacher.role || teacher.category;
+
+    const degree = document.createElement("td");
+    degree.textContent = teacher.degree;
+
+    row.append(
+        number,
+        initialsCell,
+        name,
+        role,
+        degree
+    );
+
+    return row;
+}
+
+
+// ========================================
+// DISPLAY TEACHERS
+// ========================================
+
+function renderTeachers() {
+
+    const container = document.getElementById("teacherSections");
+    const searchValue = document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const selectedCategory = document
+        .getElementById("categoryFilter")
+        .value;
+
+    container.innerHTML = "";
+
+    let visibleCount = 0;
+
+    categories.forEach(category => {
+
+        if (
+            selectedCategory !== "All" &&
+            selectedCategory !== category.id
+        ) {
+            return;
+        }
+
+        const filteredTeachers = teachers.filter(teacher => {
+
+            const matchesCategory =
+                teacher.category === category.id;
+
+            const searchableText = (
+                teacher.name + " " +
+                teacher.degree + " " +
+                (teacher.role || "") + " " +
+                teacher.category
+            ).toLowerCase();
+
+            const matchesSearch =
+                searchableText.includes(searchValue);
+
+            return matchesCategory && matchesSearch;
+        });
+
+        if (filteredTeachers.length === 0) {
+            return;
+        }
+
+        visibleCount += filteredTeachers.length;
+
+        const section = document.createElement("section");
+        section.className = "category-section";
+
+        const heading = document.createElement("h2");
+        heading.className = "category-title";
+        heading.textContent =
+            category.title + " (" + filteredTeachers.length + ")";
+
+        const description = document.createElement("p");
+        description.className = "category-description";
+        description.textContent = category.description;
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "table-wrapper";
+
+        const table = document.createElement("table");
+
+        const thead = document.createElement("thead");
+        const headerRow = document.createElement("tr");
+
+        [
+            "No.",
+            "Initials",
+            "Teacher Name",
+            "Designation",
+            "Qualification"
+        ].forEach(text => {
+
+            const th = document.createElement("th");
+            th.textContent = text;
+            headerRow.appendChild(th);
+
+        });
+
+        thead.appendChild(headerRow);
+
+        const tbody = document.createElement("tbody");
+
+        filteredTeachers.forEach((teacher, index) => {
+            tbody.appendChild(
+                createTeacherRow(teacher, index)
+            );
+        });
+
+        table.append(thead, tbody);
+        wrapper.appendChild(table);
+
+        section.append(
+            heading,
+            description,
+            wrapper
+        );
+
+        container.appendChild(section);
+
+    });
+
+    document.getElementById("noResults").style.display =
+        visibleCount === 0 ? "block" : "none";
+}
+
+
+// ========================================
+// INITIAL PAGE LOAD
+// ========================================
+
+document.getElementById("totalCount").textContent =
+    teachers.length;
+
+renderTeachers();
+
+</script>
+
+</body>
+</html>
